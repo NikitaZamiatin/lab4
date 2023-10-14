@@ -32,13 +32,14 @@ tens = ['', 'десять', 'двадцать', 'тридцать', 'сорок'
 hundreds = ['', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот']
 thousands = ['', 'тысяча', 'тысячи', 'тысяч']
 
-summ_str = convert(summ)
-
-if summ % 10 == 1 and summ % 100 != 11:
+if 1 <= summ <= 100000:
+    summ_str = convert(summ)
+    if summ % 10 == 1 and summ % 100 != 11:
         summ_str += "рубль"
-elif 2 <= summ % 10 <= 4 and (summ % 100 < 10 or summ % 100 >= 20):
+    elif 2 <= summ % 10 <= 4 and (summ % 100 < 10 or summ % 100 >= 20):
         summ_str += "рубля"
-else:
+    else:
         summ_str += "рублей"
-
-print(summ_str)
+    print(summ_str)
+else:
+    print('Число от 1 до 100 000, пожалуйста')
