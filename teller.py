@@ -1,7 +1,7 @@
 def convert(n):
     if n < 10:
         return ones[n] + ' '
-    elif n < 20:
+    elif n < 20 and n != 10:
         return teens[n - 10] + ' '
     elif n < 100:
         if n % 10 == 0:
@@ -17,8 +17,10 @@ def convert(n):
         m = n % 1000
         n //= 1000
             
-        if n % 10 == 1 and n % 100 != 11:
-            return convert(n) + thousands[1] + ' ' + convert(m)
+        if n == 1:
+            return 'одна ' + thousands[1] + ' ' + convert(m)
+        elif n % 10 == 1 and n % 100 != 11:
+            return convert(n - n%10) + ' одна ' + thousands[1] + ' ' + convert(m)
         elif 2 <= n % 10 <= 4 and (n % 100 < 10 or n % 100 >= 20):
             return convert(n) + thousands[2] + ' ' + convert(m)
         else:
